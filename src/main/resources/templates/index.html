@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MotorSports/Главная</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url('/images/autos.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #FFFFFF; /* Default text color */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background for readability */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+            text-align: center;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #FFD700; /* Gold for the main title */
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #D3D3D3; /* Light silver for secondary text */
+            margin-bottom: 30px;
+        }
+
+        .text-center a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #C0C0C0; /* Silver button */
+            color: #333333; /* Dark gray text for contrast */
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .text-center a:hover {
+            background-color: #FFD700; /* Gold on hover */
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>
+        <span>MotorSports</span>
+    </h1>
+    <h2>
+        Добро пожаловать!
+    </h2>
+
+    <div class="text-center">
+        <a th:href="@{/cars}">Перейти к подбору авто</a>
+    </div>
+</div>
+</body>
+</html>

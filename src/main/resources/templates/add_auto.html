@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>[[${pageTitle}]]</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url('/images/autos.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      color: #FFFFFF;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .card {
+      background-color: rgba(51, 51, 51, 0.5); /* Dark gray with slight transparency */
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .card-header {
+      background-color: #FFD700; /* Gold header */
+      color: #333333; /* Dark text for contrast */
+      text-align: center;
+      padding: 15px;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .card-header h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .card-body {
+      padding: 25px;
+    }
+
+    .form-label {
+      color: #D3D3D3; /* Light silver for labels */
+      font-weight: 600;
+    }
+
+    .form-control {
+      background-color: #444444; /* Darker input background */
+      color: #D3D3D3; /* Light silver text */
+      border: 1px solid #C0C0C0; /* Silver border */
+    }
+
+    .form-control:focus {
+      background-color: #555555;
+      color: #FFFFFF;
+      border-color: #FFD700; /* Gold focus outline */
+      box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+
+    .form-control::placeholder {
+      color: #A0A0A0; /* Lighter gray placeholder */
+    }
+
+    .btn-primary {
+      background-color: #007BFF; /* Bootstrap default blue */
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #FFD700; /* Gold on hover */
+      color: #000000;
+    }
+
+    .btn-outline-secondary {
+      color: #C0C0C0; /* Silver */
+      border-color: #C0C0C0;
+    }
+
+    .btn-outline-secondary:hover {
+      background-color: #FFD700; /* Gold on hover */
+      color: #000000;
+      border-color: #FFD700;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="mb-0">[[${pageTitle}]]</h2>
+        </div>
+        <div class="card-body">
+          <form th:action="@{/cars/save}" method="post" th:object="${car}">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="mb-3">
+              <label for="name" class="form-label">Название:</label>
+              <input id="name" type="text" th:field="*{name}"
+                     class="form-control" required minlength="5" maxlength="100" />
+            </div>
+
+            <div class="mb-3">
+              <label for="year" class="form-label">Год:</label>
+              <input id="year" type="number" th:field="*{year}"
+                     class="form-control" min="0" required />
+            </div>
+
+            <div class="mb-3">
+              <label for="country" class="form-label">Страна:</label>
+              <input id="country" type="text" th:field="*{country}"
+                     class="form-control" required maxlength="50" />
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Описание:</label>
+              <textarea id="description" th:field="*{description}"
+                        class="form-control" rows="4" required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="price" class="form-label">Цена:</label>
+              <input id="price" type="number" th:field="*{price}"
+                     class="form-control" min="0" required />
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+              <button type="submit" class="btn btn-primary">Сохранить</button>
+              <button type="button" class="btn btn-outline-secondary"
+                      onclick="cancelForm()">Отмена</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function cancelForm() {
+    window.location = "[[@{/cars}]]";
+  }
+</script>
+</body>
+</html>
